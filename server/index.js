@@ -33,7 +33,7 @@ app.use("/api/donation", donationRouter);
 app.use("/auth", authRouter);
 
 // database connection
-mongoose.connect(process.env.CONN_STRING).then(console.log("Connected to db"));
+mongoose.connect("mongodb+srv://rashmitauchil20212:McaProject@cluster0.zxjqrvl.mongodb.net/").then(console.log("Connected to db"));
 
 // opening up port
 app.listen(5050, () => {

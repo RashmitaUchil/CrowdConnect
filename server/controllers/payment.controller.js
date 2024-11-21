@@ -7,8 +7,8 @@ const createOrder = async (req, res) => {
   console.log("Started createOrders func in payment.controller.js file");
   try {
     const instance = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET,
+      //key_id: process.env.RAZORPAY_KEY_ID,
+      // key_secret: process.env.RAZORPAY_KEY_SECRET,
     });
 
     const options = {
@@ -48,7 +48,7 @@ const verifyPayments = async (req, res) => {
       req.body;
     const sign = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSign = crypto
-      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      //.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(sign.toString())
       .digest("hex");
 

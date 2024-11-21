@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/user.model");
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend("re_jKxpkvDd_BnNXucorn6cz6JdgkwQmhKqi");
 
 const cookieExtractor = (req) => {
   let token = null;
@@ -15,7 +15,7 @@ const cookieExtractor = (req) => {
 
 const opts = {
   jwtFromRequest: cookieExtractor,
-  secretOrKey: process.env.JWT_SECRET,
+  secretOrKey: "asjkdbv9238r4jvdsb",
 };
 
 passport.use(
@@ -56,14 +56,14 @@ const sendVerificationEmail = async (email, password, name) => {
 
     const token = jwt.sign(
       { name, email, password: hashedPassword },
-      process.env.JWT_SECRET,
+      "asjkdbv9238r4jvdsb",
       { expiresIn: "1h" }
     );
 
     const verificationLink = `http://localhost:5173/verify-email/${token}`;
 
     await resend.emails.send({
-      from: "SparkFund <sparkfund@haridev.dev>",
+      from: "CrowdConnect <onboarding@resend.dev>",
       to: email,
       subject: "Email Verification",
       html: `<p>Please verify your email by clicking on the following link: <a href="${verificationLink}">Verify Email</a></p>`,
@@ -79,7 +79,7 @@ const verifyEmail = async (req, res) => {
   console.log("started verifyEmail() in auth.controller.js file");
   try {
     const { token } = req.query;
-    const { name, email, password } = jwt.verify(token, process.env.JWT_SECRET);
+    const { name, email, password } = jwt.verify(token, "abcdefg");
 
     const user = await User.create({
       name,

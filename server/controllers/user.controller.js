@@ -60,7 +60,7 @@ const loginWithPass = async (req, res) => {
     console.log("Hash matched successfully; signing JWT token");
     const token = jwt.sign(
       { _id: doc._id, email: doc.email },
-      process.env.JWT_SECRET,
+     "asjkdbv9238r4jvdsb",
       { expiresIn: "2d" }
     );
 

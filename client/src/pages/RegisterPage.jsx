@@ -71,8 +71,8 @@ function RegisterPage() {
           onSubmit={handleSubmit(onSubmit)}
           className="my-4 flex flex-col rounded-md border-2 border-solid p-6 shadow-xl"
         >
-          <h2 className="m-3 text-center text-2xl font-bold text-[#386641]">
-            Join the SparkFund Community
+          <h2 className="m-3 text-center text-2xl font-bold text-[#76448a]">
+            Join the CrowdConnect Community
           </h2>
           <label htmlFor="name" className="my-2">
             <p>Full Name</p>
@@ -113,14 +113,14 @@ function RegisterPage() {
           )}
           <button
             type="submit"
-            className="my-6 rounded-md bg-[#6A994E] py-2 text-lg font-bold text-[#F2E8CF]"
+            className="my-6 rounded-md bg-[#76448a] py-2 text-lg font-bold text-[#F2E8CF]"
           >
             Sign Up
           </button>
           <div className="my-1 text-center text-lg md:w-full">
             <p>
               Already have an account?{" "}
-              <Link to={"/login"} className="font-bold text-[#386641]">
+              <Link to={"/login"} className="font-bold text-[#76448a]">
                 Log in
               </Link>
             </p>

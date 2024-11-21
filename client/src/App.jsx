@@ -21,6 +21,7 @@ import EducationCategory from "./pages/Categories/EducationCategory";
 import EnvironmentCategory from "./pages/Categories/EnvironmentCategory";
 import EmergencyCategory from "./pages/Categories/EmergencyCategory";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
+import AboutPage from "./pages/About";
 
 // static asset imports
 import spinner from "./assets/spinner.svg";
@@ -64,6 +65,7 @@ function App() {
             <Route path="/category/emergency" element={<EmergencyCategory />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/profile" element={<MyProfilePage />} />
             <Route path="/campaign/:id" element={<CampaignPage />} />
             <Route

@@ -14,7 +14,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.user);
 
   return (
-    <nav className="bg-[#6A994E]">
+    <nav className="bg-[#76448a]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div id="test" className="flex h-16 items-center justify-between">
           {/* Mobile menu button */}
@@ -66,7 +66,7 @@ const Navbar = () => {
                   src="https://cdn3.iconfinder.com/data/icons/parks-and-rec/400/parks-10-512.png"
                   alt="Your Logo"
                 />
-                <p className="mx-2 font-bold text-[#FFB703]">SparkFund</p>
+                <p className="mx-2 font-bold text-[#dc7633]">CrowdConnect</p>
               </div>
             </Link>
 
@@ -75,18 +75,18 @@ const Navbar = () => {
                 {/* Navigation Links */}
                 <Link
                   to={"/"}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#8bc34a] hover:text-black"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#c39bd3] hover:text-black"
                 >
                   Home
                 </Link>
                 <Link
                   to={"/about"}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#8bc34a] hover:text-black"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#c39bd3] hover:text-black"
                 >
                   About
                 </Link>
 
-                <div className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#8bc34a] hover:text-black">
+                <div className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#c39bd3] hover:text-black">
                   <CategoriesDropdown />
                 </div>
               </div>
@@ -100,7 +100,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to={"/login"}>
-                <button className="rounded bg-[#8bc34a] px-4 py-2 font-bold text-[#F2E8CF] transition-all duration-300 hover:shadow-lg">
+                <button className="rounded bg-[#c39bd3] px-4 py-2 font-bold text-[#00000] transition-all duration-300 hover:shadow-lg">
                   Login
                 </button>
               </Link>

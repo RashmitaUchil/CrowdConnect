@@ -21,15 +21,15 @@ function HomePage() {
     <div>
       <div
         id="imageBackground"
-        className="flex h-screen w-full flex-col justify-between bg-[url('/MotorCycleGroup.jpeg')] bg-cover bg-center bg-no-repeat"
+        className="flex h-screen w-full flex-col justify-between bg-[url('/people.jpg')] bg-cover bg-center bg-no-repeat"
       >
         <div className="mx-auto mt-20">
-          <h1 className="text-center text-4xl font-extrabold text-[#6A994E]">
-            SparkFund
+          <h1 className="text-center text-4xl font-extrabold text-[#dc7633]">
+            CrowdConnect
           </h1>
-          <h1 className="mx-2 text-4xl font-extrabold text-[#F2E8CF]">
+          {/* <h1 className="mx-2 text-4xl font-extrabold text-[#dc7633]">
             Empowering Dreams, One Contribution at a Time
-          </h1>
+          </h1> */}
         </div>
         <div className="mb-36 text-center">
           <h1 className="mx-2 text-4xl font-extrabold text-[#FFB703]">
@@ -39,7 +39,7 @@ function HomePage() {
       </div>
       {/* Featured campaigns */}
       <div className="my-10 p-2">
-        <div id="sampleCampaigns" className="rounded-md bg-[#E9F1E4]">
+        <div id="sampleCampaigns" className="rounded-md bg-[#ebdef0]">
           <h1 className="flex h-28 items-center justify-center text-center text-4xl font-bold">
             Featured Campaigns
           </h1>
@@ -75,7 +75,7 @@ function HomePage() {
         >
           <Link
             to={"/category/medical"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <FaHandHoldingMedical className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Medical</p>
@@ -83,7 +83,7 @@ function HomePage() {
           </Link>
           <Link
             to={"/category/education"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <IoMdSchool className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Education</p>
@@ -91,7 +91,7 @@ function HomePage() {
           </Link>
           <Link
             to={"/category/sports"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <MdOutlineSportsTennis className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Sports</p>
@@ -99,7 +99,7 @@ function HomePage() {
           </Link>
           <Link
             to={"/category/environment"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <GiEarthAsiaOceania className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Environment</p>
@@ -107,7 +107,7 @@ function HomePage() {
           </Link>
           <Link
             to={"/category/emergency"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <PiAmbulanceFill className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Emergency</p>
@@ -115,7 +115,7 @@ function HomePage() {
           </Link>
           <Link
             to={"/category/animal"}
-            className="m-4 flex items-center justify-center rounded bg-[#E9F1E4] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
+            className="m-4 flex items-center justify-center rounded bg-[#ebdef0] px-10 py-4 text-2xl transition-all duration-300 hover:shadow-lg"
           >
             <PiDogFill className="mx-4" />
             <p className="mr-10 flex h-36 w-32 items-center">Animal</p>
