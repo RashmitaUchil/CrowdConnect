@@ -7,8 +7,8 @@ const createOrder = async (req, res) => {
   console.log("Started createOrders func in payment.controller.js file");
   try {
     const instance = new Razorpay({
-      //key_id: process.env.RAZORPAY_KEY_ID,
-      // key_secret: process.env.RAZORPAY_KEY_SECRET,
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
     });
 
     const options = {
@@ -32,7 +32,7 @@ const createOrder = async (req, res) => {
     });
   } catch (error) {
     console.log(
-      "Some error occured in createOrder func in payments.controller.js file"
+      "Some error occurred in createOrder func in payments.controller.js file"
     );
     console.log(error);
     res.json({ success: false, serverMsg: "Internal server error" });

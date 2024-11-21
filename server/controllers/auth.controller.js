@@ -79,7 +79,7 @@ const verifyEmail = async (req, res) => {
   console.log("started verifyEmail() in auth.controller.js file");
   try {
     const { token } = req.query;
-    const { name, email, password } = jwt.verify(token, "abcdefg");
+    const { name, email, password } = jwt.verify(token, "asjkdbv9238r4jvdsb");
 
     const user = await User.create({
       name,
