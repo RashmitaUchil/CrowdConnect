@@ -1,5 +1,4 @@
 const User = require("../models/user.model");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const fs = require("fs").promises;
@@ -46,7 +45,7 @@ const loginWithPass = async (req, res) => {
 
     // if doc found compare password with hash
     console.log("Email id found, comparing password with hash");
-    const isMatch = await bcrypt.compare(password, doc.password);
+    const isMatch = (password=== doc.password);
 
     // send response if password did not match
     if (!isMatch) {

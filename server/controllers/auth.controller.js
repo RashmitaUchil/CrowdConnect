@@ -1,11 +1,11 @@
 const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
-const { Resend } = require("resend");
+
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+
 
 const User = require("../models/user.model");
-const resend = new Resend("re_jKxpkvDd_BnNXucorn6cz6JdgkwQmhKqi");
+
 
 const cookieExtractor = (req) => {
   let token = null;
@@ -52,21 +52,14 @@ const authenticate = (req, res, next) => {
 
 const sendVerificationEmail = async (email, password, name) => {
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    
 
-    const token = jwt.sign(
-      { name, email, password: hashedPassword },
-      "asjkdbv9238r4jvdsb",
-      { expiresIn: "1h" }
-    );
+    
 
-    const verificationLink = `http://localhost:5173/verify-email/${token}`;
-
-    await resend.emails.send({
-      from: "CrowdConnect <onboarding@resend.dev>",
-      to: email,
-      subject: "Email Verification",
-      html: `<p>Please verify your email by clicking on the following link: <a href="${verificationLink}">Verify Email</a></p>`,
+    await User.create({
+      name,
+      email,
+      password,
     });
   } catch (error) {
     console.log("Error in sendVerificationEmail() in auth.controller.js file");

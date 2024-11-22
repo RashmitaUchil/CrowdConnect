@@ -52,11 +52,12 @@ function RegisterPage() {
     try {
       const responseData = await registerUser(data).unwrap();
       console.log(responseData);
+      navigate("/login");
       toast({ description: responseData.serverMsg });
     } catch (error) {
       console.error(error);
       toast({ description: error.data.serverMsg });
-      navigate("/login");
+     
     }
   };
 
