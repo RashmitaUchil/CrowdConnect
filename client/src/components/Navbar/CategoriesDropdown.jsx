@@ -9,58 +9,58 @@ function CategoriesDropdown() {
     <div>
       <Menu>
         <MenuButton>
-          <div className="flex items-center">
+          <div className="flex items-center text-[#F2E8CF]">
             Categories <FiChevronDown className="ml-2 mt-1" />
           </div>
         </MenuButton>
         <MenuItems
           anchor="bottom"
           transition
-          className="mt-5 w-36 origin-top rounded bg-[#c39bd3] p-2 shadow-lg transition duration-200 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
+          className="mt-5 w-36 origin-top rounded bg-[#c39bd3] p-2 shadow-lg transition-all duration-300 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
         >
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 transition-all duration-300 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/medical"}
             >
               Medical
             </Link>
           </MenuItem>
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/education"}
             >
               Education
             </Link>
           </MenuItem>
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 transition-all duration-300 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/sports"}
             >
               Sports
             </Link>
           </MenuItem>
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 transition-all duration-300 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/environment"}
             >
               Environment
             </Link>
           </MenuItem>
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 transition-all duration-300 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/emergency"}
             >
               Emergency
             </Link>
           </MenuItem>
-          <MenuItem className="my-2 px-2 font-medium text-[#386641]">
+          <MenuItem>
             <Link
-              className="block rounded px-4 transition-all duration-300 data-[focus]:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
               to={"/category/animal"}
             >
               Animal

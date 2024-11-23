@@ -1,4 +1,4 @@
-const Razorpay = require("razorpay");
+const Stripe = require("stripe");
 const crypto = require("crypto");
 
 //create orders
@@ -6,9 +6,9 @@ const createOrder = async (req, res) => {
   console.log("- - - - - - - - - - - - - - - ");
   console.log("Started createOrders func in payment.controller.js file");
   try {
-    const instance = new Razorpay({
-      key_id: process.env.RAZORPAY_KEY_ID,
-      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    const instance = new Stripe({
+      key_id: "pk_test_51QOFhLI3THdeQF13PjrybLy5s6fvtSoUcOqLldGYHAKNp4JAG1CzIr6C7gU4gqvNPmUdb00Mlc2zxDiHroTTYWJP004nNlPbHQ",
+      key_secret: "sk_test_51QOFhLI3THdeQF13JKmNMmMDBuclGlGQBWK4VSTYfDkAWN7r2pS9WWIfTgoV5nL1YhPZUEfpuZ2x5zB78Juhlf1L004CxNz3ay",
     });
 
     const options = {

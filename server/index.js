@@ -3,6 +3,11 @@ const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const create_checkout_session=require("./stripe.js")
+
+const app = express();
+app.use(express.static('public'));
+
 
 //router imports
 const userRouter = require("./routers/userRouter");
@@ -11,7 +16,6 @@ const paymentRouter = require("./routers/paymentRouter");
 const donationRouter = require("./routers/donationRouter");
 const authRouter = require("./routers/authRouter");
 
-const app = express();
 
 // middleware setup
 app.use(cookieParser());
@@ -25,12 +29,15 @@ app.use(
   })
 );
 
-// routes setup
+
+
+
 app.use("/api/user", userRouter);
 app.use("/api/campaign", campaignRouter);
 app.use("/api/payment", paymentRouter);
 app.use("/api/donation", donationRouter);
 app.use("/auth", authRouter);
+app.post("/create-checkout-session", create_checkout_session)
 
 // database connection
 mongoose.connect("mongodb+srv://rashmitauchil20212:McaProject2@cluster0.iewvd.mongodb.net/").then(console.log("Connected to db"));

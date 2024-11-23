@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
+
 // redux imports
 import { useSelector } from "react-redux";
 import {
@@ -20,6 +21,8 @@ import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 
 function CampaignPage() {
+
+  
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
@@ -53,6 +56,7 @@ function CampaignPage() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(donationSchema) });
 
+  
   const donation = watch("amount");
 
   let progress =
@@ -102,6 +106,7 @@ function CampaignPage() {
     }
   };
 
+  
   const initPayment = (order) => {
     const options = {
       key: import.meta.env.RAZORPAY_KEY,
@@ -133,15 +138,29 @@ function CampaignPage() {
 
   const handlePayments = async (data) => {
     try {
-      const responseData = await createOrder(data).unwrap();
-
-      console.log(responseData);
-      initPayment(responseData.order);
-      reset();
+      const response = await fetch('http://localhost:5050/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: data.amount,
+        }),
+      });
+  
+      const session = await response.json();
+  
+      if (response.ok && session.url) {
+        window.location.href = session.url; // Redirect to Stripe checkout page
+      } else {
+        console.error('Failed to create checkout session:', session);
+      }
     } catch (error) {
-      console.log(error);
+      console.error('Error during payment processing:', error);
     }
   };
+  
+  
 
   if (isLoading) {
     return <div>Loading</div>;

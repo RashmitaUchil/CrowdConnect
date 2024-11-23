@@ -27,6 +27,7 @@ import AboutPage from "./pages/About";
 import spinner from "./assets/spinner.svg";
 
 function App() {
+
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const {
@@ -34,6 +35,7 @@ function App() {
     isLoading,
     isError,
   } = useGetProfileQuery(undefined, { skip: !user }); // Skip fetching profile data if user is null
+
 
   useEffect(() => {
     if (isError) dispatch(removeUser());
@@ -76,9 +78,12 @@ function App() {
               path="/verify-email/:token"
               element={<EmailVerificationPage />}
             />
+             
+
           </Route>
         </Routes>
       </Router>
+      
     </>
   );
 }
