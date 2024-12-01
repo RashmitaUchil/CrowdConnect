@@ -39,7 +39,7 @@ app.use("/api/donation", donationRouter);
 app.use("/auth", authRouter);
 app.post("/create-checkout-session", create_checkout_session)
 
-const stripe = require('stripe')('sk_test_51QOFhLI3THdeQF13JKmNMmMDBuclGlGQBWK4VSTYfDkAWN7r2pS9WWIfTgoV5nL1YhPZUEfpuZ2x5zB78Juhlf1L004CxNz3ay');
+const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
 const endpointSecret = "whsec_8f18bd7d42dddb1b36c647eb13f24bef6a1748a94aca69682ee336f32bf0c927";
 
 app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
