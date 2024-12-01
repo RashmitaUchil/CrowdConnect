@@ -31,7 +31,7 @@ app.use(bodyParser.json({
 }));
 
 
-app.post('/webhook', express.raw({type: 'application/json'}),async (request, response) => {
+app.post('/webhook', bodyParser.raw({type: '*/*'}),async (request, response) => {
 
   try{
   const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
@@ -41,7 +41,7 @@ app.post('/webhook', express.raw({type: 'application/json'}),async (request, res
   let event;
   const signature = request.headers['stripe-signature'];
 
-  event = stripe.webhooks.constructEvent(request.rawBody, signature, endpointSecret);
+  event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object; // Contains the checkout session
     const sessionId = session.id;
