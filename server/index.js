@@ -4,9 +4,14 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const create_checkout_session=require("./stripe.js")
+var bodyParser = require('body-parser')
+
 
 const app = express();
 app.use(express.static('public'));
+
+app.use(bodyParser.json());
+
 
 
 //router imports
@@ -16,6 +21,14 @@ const paymentRouter = require("./routers/paymentRouter");
 const donationRouter = require("./routers/donationRouter");
 const authRouter = require("./routers/authRouter");
 
+app.use(bodyParser.json({
+  verify: function (req, res, buf) {
+      var url = req.originalUrl;
+      if (url.startsWith('/webhook')) {
+          req.rawBody = buf.toString()
+      }
+  }
+}));
 
 
 app.post('/webhook', express.raw({type: 'application/json'}),async (request, response) => {
@@ -28,7 +41,7 @@ app.post('/webhook', express.raw({type: 'application/json'}),async (request, res
   let event;
   const signature = request.headers['stripe-signature'];
 
-  event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
+  event = stripe.webhooks.constructEvent(request.rawBody, signature, endpointSecret);
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object; // Contains the checkout session
     const sessionId = session.id;
