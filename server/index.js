@@ -47,9 +47,7 @@ app.post('/webhook', express.raw({type: 'application/json'}),async (request, res
       });
   }
 
-
-  console.log('hehehehehe',event.type)
-  response.send();
+  response.status(200).send('Webhook received');
 }catch(err){
   console.log(err)
 }

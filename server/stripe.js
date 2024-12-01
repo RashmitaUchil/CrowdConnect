@@ -19,6 +19,11 @@ const create_checkout_session=async (req, res) => {
           },
         ],
         mode: "payment",
+        customer_email: 'customer@example.com',
+        billing_address_collection: 'required', 
+        shipping_address_collection: {
+          allowed_countries: ['IN'], 
+        },
         success_url: `http://localhost:5173/success`,
         cancel_url: `${YOUR_DOMAIN}/?canceled=true`,
       });
