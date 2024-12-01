@@ -41,7 +41,7 @@ app.post('/webhook', bodyParser.raw({type: '*/*'}),async (request, response) => 
   let event;
   const signature = request.headers['stripe-signature'];
 
-  event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
+  event = stripe.webhooks.constructEvent(request.rawBody, signature, endpointSecret);
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object; // Contains the checkout session
     const sessionId = session.id;
