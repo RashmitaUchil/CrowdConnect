@@ -7,7 +7,7 @@ const {
 } = require("../controllers/donation.controller");
 const { authenticate } = require("../controllers/auth.controller");
 
-donationRouter.post("", authenticate, createDonation);
+donationRouter.post("", createDonation);
 donationRouter.get("/user-donations", authenticate, getUserDonation);
 
 module.exports = donationRouter;

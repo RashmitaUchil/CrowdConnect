@@ -6,10 +6,6 @@ import { formatDistanceToNow } from "date-fns";
 import { useSelector } from "react-redux";
 import {
   useGetCampaignQuery,
-  useCreateOrderMutation,
-  useVerifyPaymentMutation,
-  useCreateDonationMutation,
-  useAddDonationToCampaignMutation,
 } from "../features/apiSlice";
 
 // zod and form imports
@@ -29,12 +25,6 @@ function CampaignPage() {
 
   // get campaign id from url
   const { id } = useParams();
-
-  // initialise RTK query hooks
-  const [createOrder] = useCreateOrderMutation();
-  const [verifyPayment] = useVerifyPaymentMutation();
-  const [createDonation] = useCreateDonationMutation();
-  const [addDonationToCampaign] = useAddDonationToCampaignMutation();
   const { data: campaignData, isLoading } = useGetCampaignQuery(id); // fetch campaign data
 
   // zod schema definition
@@ -50,14 +40,12 @@ function CampaignPage() {
   // react-hook-form initialization
   const {
     register,
-    watch,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(donationSchema) });
 
   
-  const donation = watch("amount");
+
 
   let progress =
     (campaignData?.campaign.amountRaised /
@@ -85,56 +73,10 @@ function CampaignPage() {
     navigate("/login");
   };
 
-  // create a donation document in db and update campaign document
-  const handleAfterPaymentVerificationTasks = async (response) => {
-    try {
-      const createdDonationData = await createDonation({
-        campaignId: campaignData.campaign._id,
-        donationAmount: donation,
-        orderId: response.razorpay_order_id,
-        paymentId: response.razorpay_payment_id,
-      }).unwrap();
 
-      await addDonationToCampaign({
-        amount: donation,
-        campaignId: campaignData.campaign._id,
-        donationID: createdDonationData.savedDonation._id,
-      });
-      toast({ description: "Thank you for donating to this charity" });
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   
-  const initPayment = (order) => {
-    const options = {
-      key: import.meta.env.RAZORPAY_KEY,
-      amount: order.amount,
-      currency: order.currency,
-      name: campaignData.campaign.title,
-      description: `Contribution to ${campaignData.campaign.createdBy.name}'s cause`,
-      order_id: order.id,
-      handler: async (response) => {
-        try {
-          const data = await verifyPayment(response).unwrap();
-          console.log(data);
-          // code to create donation document and update campaign document
-          handleAfterPaymentVerificationTasks(response);
-        } catch (error) {
-          console.log("An error occured while initiating payment");
-          console.error(error);
-          toast({ variant: "destructive", description: "An error occured" });
-        }
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-  };
+  
 
   const handlePayments = async (data) => {
     try {
@@ -145,6 +87,9 @@ function CampaignPage() {
         },
         body: JSON.stringify({
           amount: data.amount,
+          product_id : campaignData.campaign._id,
+          username : user.name,
+          user_id : user._id
         }),
       });
   
