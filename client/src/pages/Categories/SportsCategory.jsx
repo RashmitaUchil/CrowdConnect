@@ -5,7 +5,7 @@ import CampaignCard from "../../components/CampaignCard";
 // static asset imports
 import SportsCategoryPic from "../../assets/categoryBanners/SportsCategoryPic.jpg";
 
-function SportsCategory() {
+function  SportsCategory() {
   const { data, isLoading } = useGetCampaignsQuery("Sports");
   return (
     <div className="">

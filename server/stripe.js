@@ -13,13 +13,13 @@ const create_checkout_session=async (req, res) => {
               product_data: {
                 name: "Donation",
               },
-              unit_amount: amount*100 , // Stripe expects amount in cents
+              unit_amount: amount*100 ,
             },
             quantity: 1,
           },
         ],
         mode: "payment",
-        success_url: `${YOUR_DOMAIN}/?success=true`,
+        success_url: `http://localhost:5173/success`,
         cancel_url: `${YOUR_DOMAIN}/?canceled=true`,
       });
       console.log(session.url)
