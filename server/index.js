@@ -39,6 +39,29 @@ app.use("/api/donation", donationRouter);
 app.use("/auth", authRouter);
 app.post("/create-checkout-session", create_checkout_session)
 
+const stripe = require('stripe')('sk_test_51QOFhLI3THdeQF13JKmNMmMDBuclGlGQBWK4VSTYfDkAWN7r2pS9WWIfTgoV5nL1YhPZUEfpuZ2x5zB78Juhlf1L004CxNz3ay');
+const endpointSecret = "whsec_8f18bd7d42dddb1b36c647eb13f24bef6a1748a94aca69682ee336f32bf0c927";
+
+app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+  const sig = request.headers['stripe-signature'];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+  } catch (err) {
+    response.status(400).send(`Webhook Error: ${err.message}`);
+    return;
+  }
+
+  // Handle the event
+  console.log(`Unhandled event type ${event.type}`);
+
+  // Return a 200 response to acknowledge receipt of the event
+  response.send();
+});
+
+
 // database connection
 mongoose.connect("mongodb+srv://rashmitauchil20212:McaProject2@cluster0.iewvd.mongodb.net/").then(console.log("Connected to db"));
 
