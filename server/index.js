@@ -20,6 +20,10 @@ const authRouter = require("./routers/authRouter");
 
 app.post('/webhook', express.raw({type: 'application/json'}),async (request, response) => {
 
+  try{
+  const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
+  const endpointSecret = "whsec_8f18bd7d42dddb1b36c647eb13f24bef6a1748a94aca69682ee336f32bf0c927";
+
 
   let event;
   const signature = request.headers['stripe-signature'];
@@ -34,6 +38,7 @@ app.post('/webhook', express.raw({type: 'application/json'}),async (request, res
       expand: ['line_items'],
     });
     const lineItems = checkoutSession.line_items.data;
+    console.log('lineee',lineItems)
       lineItems.forEach((item) => {
         console.log('Product Name:', item.description);
         console.log('Quantity:', item.quantity);
@@ -43,12 +48,11 @@ app.post('/webhook', express.raw({type: 'application/json'}),async (request, res
   }
 
 
-
-  // Handle the event
-  console.log(`Unhandled event type ${event.type}`);
-
-  // Return a 200 response to acknowledge receipt of the event
+  console.log('hehehehehe',event.type)
   response.send();
+}catch(err){
+  console.log(err)
+}
 });
 
 
@@ -74,8 +78,6 @@ app.use("/api/donation", donationRouter);
 app.use("/auth", authRouter);
 app.post("/create-checkout-session", create_checkout_session)
 
-const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
-const endpointSecret = "whsec_8f18bd7d42dddb1b36c647eb13f24bef6a1748a94aca69682ee336f32bf0c927";
 
 
 // database connection
