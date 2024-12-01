@@ -22,7 +22,7 @@ const donationRouter = require("./routers/donationRouter");
 const authRouter = require("./routers/authRouter");
 
 app.use(express.json({verify: (req, res, buf) => req.rawBody = buf})); 
-app.post('/webhook', express.raw({ type: "application/json" }),async (request, response) => {
+app.post('/webhook',async (request, response) => {
 
   try{
   const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
