@@ -42,17 +42,31 @@ app.post("/create-checkout-session", create_checkout_session)
 const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
 const endpointSecret = "whsec_8f18bd7d42dddb1b36c647eb13f24bef6a1748a94aca69682ee336f32bf0c927";
 
-app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
-  const sig = request.headers['stripe-signature'];
+app.post('/webhook', express.raw({type: 'application/json'}),async (request, response) => {
+
 
   let event;
+  const signature = request.headers['stripe-signature'];
 
-  try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-  } catch (err) {
-    response.status(400).send(`Webhook Error: ${err.message}`);
-    return;
+  event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object; // Contains the checkout session
+    const sessionId = session.id;
+
+    console.log('Checkout Session ID:', sessionId);
+    const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['line_items'],
+    });
+    const lineItems = checkoutSession.line_items.data;
+      lineItems.forEach((item) => {
+        console.log('Product Name:', item.description);
+        console.log('Quantity:', item.quantity);
+        console.log('Price:', item.price.unit_amount / 100); // Convert cents to dollars
+        console.log('Currency:', item.price.currency);
+      });
   }
+
+
 
   // Handle the event
   console.log(`Unhandled event type ${event.type}`);
