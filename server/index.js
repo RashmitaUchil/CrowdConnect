@@ -21,7 +21,7 @@ const paymentRouter = require("./routers/paymentRouter");
 const donationRouter = require("./routers/donationRouter");
 const authRouter = require("./routers/authRouter");
 
-  
+app.use(express.json({verify: (req, res, buf) => req.rawBody = buf})); 
 app.post('/webhook', express.raw({ type: "application/json" }),async (request, response) => {
 
   try{
@@ -32,7 +32,7 @@ app.post('/webhook', express.raw({ type: "application/json" }),async (request, r
   let event;
   const signature = request.headers['stripe-signature'];
 
-  event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
+  event = stripe.webhooks.constructEvent(request.rawBody, signature, endpointSecret);
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object; // Contains the checkout session
     const sessionId = session.id;
