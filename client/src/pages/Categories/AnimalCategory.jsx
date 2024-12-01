@@ -3,7 +3,7 @@ import { useGetCampaignsQuery } from "../../features/apiSlice";
 // component imports
 import CampaignCard from "../../components/CampaignCard";
 // static asset imports
-import GoldenRetriever from "../../assets/categoryBanners/GoldenRetriever.jpg";
+import animals from "../../assets/categoryBanners/animals.jpg";
 
 function AnimalCategory() {
   const { data, isLoading } = useGetCampaignsQuery("Animal");
@@ -18,7 +18,7 @@ function AnimalCategory() {
       <section id="picWithQuote" className="p-6">
         <div className="flex w-full flex-col rounded-lg bg-[#E9F1E4] md:flex-row">
           <img
-            src={GoldenRetriever}
+            src={animals}
             alt=""
             className="h-auto max-h-96 w-full rounded-lg object-cover md:w-1/2"
           />

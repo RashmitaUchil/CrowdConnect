@@ -86,7 +86,7 @@ const Navbar = () => {
                   About
                 </Link>
 
-                <div className="rounded-md px-3 py-2 text-sm font-medium text-[#F2E8CF] transition-all duration-500 hover:bg-[#D9C2EB] hover:text-black">
+                <div className="rounded-md px-3 py-2 text-sm font-medium text-[#76448a] transition-all duration-500 hover:bg-[#76448a] hover:text-black">
                   <CategoriesDropdown />
                 </div>
               </div>

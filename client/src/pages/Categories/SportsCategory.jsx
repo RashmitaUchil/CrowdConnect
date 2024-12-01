@@ -3,7 +3,7 @@ import { useGetCampaignsQuery } from "../../features/apiSlice";
 // component imports
 import CampaignCard from "../../components/CampaignCard";
 // static asset imports
-import SportsCategoryPic from "../../assets/categoryBanners/SportsCategoryPic.jpg";
+import SportsCategoryPic from "../../assets/categoryBanners/sports.jpg";
 
 function SportsCategory() {
   const { data, isLoading } = useGetCampaignsQuery("Sports");

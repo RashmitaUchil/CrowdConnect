@@ -53,6 +53,17 @@ function CreateFundraiserPage() {
     deadline: z.coerce
       .date()
       .min(new Date(), { message: "Please select a deadline in the future" }),
+
+    ifscCode: z
+      .string()
+      .length(11, { message: "IFSC code must be exactly 11 characters long" })
+      .regex(/^[A-Z]{4}0[A-Z0-9]{6}$/, { message: "Invalid IFSC code format" }),
+
+    bankAccountNumber: z
+      .string()
+      .min(10, { message: "Bank account number is required" })
+      .max(18, { message: "Bank account number cannot exceed 18 characters" })
+      .regex(/^\d+$/, { message: "Bank account number must be numeric" }),
   });
 
   // react-hook-form initialization
@@ -91,6 +102,7 @@ function CreateFundraiserPage() {
                 Create New Fundraiser
               </h1>
             </div>
+
             <div className="m-3">
               <label>
                 <p>Campaign Type</p>
@@ -111,6 +123,7 @@ function CreateFundraiserPage() {
                 <p className="text-red-500">{errors.category.message}</p>
               )}
             </div>
+
             <div className="m-3">
               <label>
                 <p>Campaign Title</p>
@@ -125,6 +138,7 @@ function CreateFundraiserPage() {
                 <p className="text-red-500">{errors.title.message}</p>
               )}
             </div>
+
             <div className="m-3">
               <label>
                 <p>Campaign Description</p>
@@ -138,6 +152,7 @@ function CreateFundraiserPage() {
                 <p className="text-red-500">{errors.description.message}</p>
               )}
             </div>
+
             <div className="m-3">
               <label>
                 <p>Target Amount</p>
@@ -162,7 +177,7 @@ function CreateFundraiserPage() {
                     {...register("targetAmount")}
                     type="number"
                     className="form-input w-full rounded-r-md border-none bg-gray-200 focus:outline-none focus:ring-0"
-                    placeholder="Enter target amaount"
+                    placeholder="Enter target amount"
                   />
                 </div>
               </label>
@@ -170,6 +185,7 @@ function CreateFundraiserPage() {
                 <p className="text-red-500">{errors.targetAmount.message}</p>
               )}
             </div>
+
             <div className="m-3">
               <label>
                 <p>Deadline</p>
@@ -184,6 +200,37 @@ function CreateFundraiserPage() {
                 <p className="text-red-500">{errors.deadline.message}</p>
               )}
             </div>
+
+            <div className="m-3">
+              <label>
+                <p>IFSC Code</p>
+                <input
+                  {...register("ifscCode")}
+                  type="text"
+                  className="form-input w-full rounded-md border-none bg-gray-200 focus:ring-0"
+                  placeholder="Enter IFSC code"
+                />
+              </label>
+              {errors.ifscCode && (
+                <p className="text-red-500">{errors.ifscCode.message}</p>
+              )}
+            </div>
+
+            <div className="m-3">
+              <label>
+                <p>Bank Account Number</p>
+                <input
+                  {...register("bankAccountNumber")}
+                  type="text"
+                  className="form-input w-full rounded-md border-none bg-gray-200 focus:ring-0"
+                  placeholder="Enter bank account number"
+                />
+              </label>
+              {errors.bankAccountNumber && (
+              <p className="text-red-500">{errors.bankAccountNumber.message}</p>
+              )}
+              </div>
+
             <div className="mt-3 flex justify-center">
               <button
                 type="submit"
@@ -192,6 +239,7 @@ function CreateFundraiserPage() {
                 Create Fundraiser
               </button>
             </div>
+            
           </form>
         </div>
       </div>

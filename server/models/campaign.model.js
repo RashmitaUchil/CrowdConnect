@@ -7,6 +7,8 @@ const CampaignSchema = mongoose.Schema({
   description: String,
   targetAmount: Number,
   deadline: Date,
+  ifscCode:String,
+  bankAccountNumber:String,
   amountRaised: { type: Number, default: 0 },
   donations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Donations" }],
 });

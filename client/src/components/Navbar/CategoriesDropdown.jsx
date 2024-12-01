@@ -20,7 +20,7 @@ function CategoriesDropdown() {
         >
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/medical"}
             >
               Medical
@@ -28,7 +28,7 @@ function CategoriesDropdown() {
           </MenuItem>
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/education"}
             >
               Education
@@ -36,7 +36,7 @@ function CategoriesDropdown() {
           </MenuItem>
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/sports"}
             >
               Sports
@@ -44,7 +44,7 @@ function CategoriesDropdown() {
           </MenuItem>
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/environment"}
             >
               Environment
@@ -52,7 +52,7 @@ function CategoriesDropdown() {
           </MenuItem>
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/emergency"}
             >
               Emergency
@@ -60,7 +60,7 @@ function CategoriesDropdown() {
           </MenuItem>
           <MenuItem>
             <Link
-              className="block my-2 px-4 rounded font-medium text-[#386641] transition-all duration-300 hover:bg-[#a7c957]"
+              className="block my-2 px-4 rounded font-medium text-[#76448a] transition-all duration-300 hover:bg-[#F4F4F4]"
               to={"/category/animal"}
             >
               Animal

@@ -3,7 +3,7 @@
 function AboutPage() {
   return (
     <div className="about-page">
-      <div className="bg-[#e5e8e8] h-screen flex items-center justify-center">
+      <div className="bg-[#D9C2EB] h-screen flex items-center justify-center">
         <div className="text-center max-w-3xl">
           <h1 className="text-5xl font-bold text-[#dc7633] mb-6">
             About CrowdConnect

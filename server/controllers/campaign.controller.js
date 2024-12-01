@@ -5,7 +5,7 @@ const createCampaign = async (req, res) => {
   console.log("Started createCampaign func");
 
   try {
-    const { title, description, targetAmount, deadline, category } = req.body;
+    const { title, description, targetAmount, deadline, category, ifscCode, bankAccountNumber  } = req.body;
     console.log("About to create new campaign");
 
     const doc = await Campaign.create({
@@ -15,6 +15,8 @@ const createCampaign = async (req, res) => {
       description,
       targetAmount,
       deadline,
+      ifscCode,
+      bankAccountNumber
     });
 
     if (!doc) {

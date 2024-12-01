@@ -3,7 +3,7 @@ import { useGetCampaignsQuery } from "../../features/apiSlice";
 // componnet imports
 import CampaignCard from "../../components/CampaignCard";
 // static asset imports
-import EnvironmentPic from "../../assets/categoryBanners/EnvironmentCategoryPic.jpg";
+import EnvironmentPic from "../../assets/categoryBanners/environment.jpg";
 
 function EnvironmentCategory() {
   const { data, isLoading } = useGetCampaignsQuery("Environment");

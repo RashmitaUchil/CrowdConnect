@@ -5,7 +5,7 @@ import { useGetCampaignsQuery } from "../../features/apiSlice";
 import CampaignCard from "../../components/CampaignCard";
 
 // static asset imports
-import MedicalCategoryPic from "../../assets/categoryBanners/MedicalCategoryPic.jpg";
+import MedicalCategoryPic from "../../assets/categoryBanners/medical.jpg";
 
 function MedicalCategory() {
   const { data, isLoading } = useGetCampaignsQuery("Medical");
