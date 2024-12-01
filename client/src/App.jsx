@@ -25,6 +25,7 @@ import AboutPage from "./pages/About";
 
 // static asset imports
 import spinner from "./assets/spinner.svg";
+import { PaymentSuccess } from "./pages/PaymentSuccess";
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/category/sports" element={<SportsCategory />} />
             <Route path="/category/animal" element={<AnimalCategory />} />
+            <Route path="/success" element={< PaymentSuccess />}/>
             <Route path="/category/education" element={<EducationCategory />} />
             <Route
               path="/category/environment"

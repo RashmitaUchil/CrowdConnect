@@ -1,10 +1,10 @@
 
-const stripe = require('stripe')('sk_test_51QOFhLI3THdeQF13JKmNMmMDBuclGlGQBWK4VSTYfDkAWN7r2pS9WWIfTgoV5nL1YhPZUEfpuZ2x5zB78Juhlf1L004CxNz3ay');
+const stripe = require('stripe')('sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ');
 const YOUR_DOMAIN = 'http://localhost:5050';
 const create_checkout_session=async (req, res) => {
     try {
       
-        const {amount}=req.body
+      const {amount,product_id,username,user_id}=req.body
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
@@ -13,13 +13,23 @@ const create_checkout_session=async (req, res) => {
               product_data: {
                 name: "Donation",
               },
-              unit_amount: amount*100 , // Stripe expects amount in cents
+              unit_amount: amount*100 ,
             },
             quantity: 1,
           },
         ],
+        metadata : {
+          product_id : product_id,
+          username : username,
+          user_id : user_id
+        },
         mode: "payment",
-        success_url: `${YOUR_DOMAIN}/?success=true`,
+        customer_email: 'customer@example.com',
+        billing_address_collection: 'auto', 
+        shipping_address_collection: {
+          allowed_countries: ['IN'], // This limits to Indian addresses
+        },
+        success_url: `http://localhost:5173/success`,
         cancel_url: `${YOUR_DOMAIN}/?canceled=true`,
       });
       console.log(session.url)

@@ -8,7 +8,7 @@ const createOrder = async (req, res) => {
   try {
     const instance = new Stripe({
       key_id: "pk_test_51QOFhLI3THdeQF13PjrybLy5s6fvtSoUcOqLldGYHAKNp4JAG1CzIr6C7gU4gqvNPmUdb00Mlc2zxDiHroTTYWJP004nNlPbHQ",
-      key_secret: "sk_test_51QOFhLI3THdeQF13JKmNMmMDBuclGlGQBWK4VSTYfDkAWN7r2pS9WWIfTgoV5nL1YhPZUEfpuZ2x5zB78Juhlf1L004CxNz3ay",
+      key_secret: "sk_test_51MaL6pSEfjueS3xIMQ6M4e5HfDZlKloQTqIFkQFBrmI3c9sC3xgsZrVe9sh95LCqmQMG7YGFGAIAbfqFhAS0A1Ur00ttVvB0gZ",
     });
 
     const options = {

@@ -1,22 +1,30 @@
 const Donation = require("../models/donation.model");
 const Campaign = require("../models/campaign.model");
 
+
 const createDonation = async (req, res) => {
   console.log("- - - - - - - - - - - - - - - ");
-  console.log("Started createDonation() in donation.controller.js file");
   try {
-    console.log("Destructuring values from req.body");
-    const { campaignId, donationAmount, orderId, paymentId } = req.body;
+    const { campaignId, donationAmount, orderId, paymentId,username,user_id } = req.body;
 
-    console.log("Creating new donation record");
     const savedDonation = await Donation.create({
-      donorName: req.user.name,
-      donorId: req.user._id,
+      donorName: username,
+      donorId: user_id,
       campaignId: campaignId,
       donationAmount: donationAmount,
       orderId: orderId,
       paymentId: paymentId,
     });
+    const donationID = savedDonation._id
+
+    const amount = Number(donationAmount);
+
+    await Campaign.findByIdAndUpdate(
+      campaignId,
+      { $inc: { amountRaised: amount }, $push: { donations: donationID } },
+      { new: true }
+    );
+
 
     if (!savedDonation) {
       console.log("Some error occured and the document could not be created");
